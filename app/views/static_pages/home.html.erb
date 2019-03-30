@@ -45,7 +45,8 @@
       if(data['elements'].length > 0){
         console.log(Object.keys(data['elements'][0]['tags']).length);
         for(let i = 0; i < Object.keys(data['elements'][0]['tags']).length; i++){
-          console.log(data['elements'][i]['tags'][i])
+          console.log(data['elements'][0]['tags']);
+          console.log(data['elements'][0]['tags'][i])
           info += "<b>" + Object.keys(data['elements'][0]['tags'][i]) + ':</b> ' + data['elements'][0]['tags'][i] + "<br>"; 
         }
       } else {

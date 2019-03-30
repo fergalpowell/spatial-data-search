@@ -24,13 +24,14 @@
   mymap.on('click', function(ev){
   var latlng = mymap.mouseEventToLatLng(ev.originalEvent);
   console.log(latlng.lat + ', ' + latlng.lng);
+  let markers = [];
   $.ajax({
     url:
         'https://www.overpass-api.de/api/interpreter?data=' + 
         '[out:json][timeout:60];' + 
-        'node(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
-        'way(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
-        'relation(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
+        'node(around:25.0,' + latlng.lat + ',' + latlng.lng +');' + 
+        'way(around:25.0,' + latlng.lat + ',' + latlng.lng +');' + 
+        'relation(around:25.0,' + latlng.lat + ',' + latlng.lng +');' + 
         'out;',
     dataType: 'json',
     type: 'GET',
@@ -38,6 +39,12 @@
     crossDomain: true
     }).done(function(data) {
       console.log( data );
+      for(let i = 0; i < 1; i++){
+        let marker = L.marker([latlng.lat, latlng.lng]).addTo(mymap);
+        markers.push(marker);
+        marker.bindPopup("<b>Latitude:</b> " + latlng.lat + "<br>" +
+                          "<b>Longitude:</b> " + latlng.lng + "<br>" +).openPopup();
+      }
     }).fail(function(error) {
       console.log(error);
       console.log( "error" );

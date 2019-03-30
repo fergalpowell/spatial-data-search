@@ -43,7 +43,7 @@
         let marker = L.marker([latlng.lat, latlng.lng]).addTo(mymap);
         markers.push(marker);
         marker.bindPopup("<b>Latitude:</b> " + latlng.lat + "<br>" +
-                          "<b>Longitude:</b> " + latlng.lng + "<br>" +).openPopup();
+                          "<b>Longitude:</b> " + latlng.lng + "<br>").openPopup();
       }
     }).fail(function(error) {
       console.log(error);

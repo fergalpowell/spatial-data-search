@@ -22,6 +22,7 @@ group :development do
 end
 
 group :production do
+  gem 'web-console',           '3.5.1'
   gem 'pg', '0.20.0'
 end
 

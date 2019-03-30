@@ -39,12 +39,21 @@
     crossDomain: true
     }).done(function(data) {
       console.log( data );
-      for(let i = 0; i < 1; i++){
-        let marker = L.marker([latlng.lat, latlng.lng]).addTo(mymap);
-        markers.push(marker);
-        marker.bindPopup("<b>Latitude:</b> " + latlng.lat + "<br>" +
-                          "<b>Longitude:</b> " + latlng.lng + "<br>").openPopup();
+      let marker = L.marker([latlng.lat, latlng.lng]).addTo(mymap);
+      markers.push(marker);
+      let info = "";
+      if(data['elements'].length > 0){
+        for(let i = 0; i < 1; i++ ){
+          for(let j = 0; j < data['elements'][i]['tags'].length(); j++){
+            info += "<b>" + Object.keys(data['elements'][i]['tags'][j]) + ':</b> ' + data['elements'][i]['tags'][j] + "<br>"; 
+          }
+        }
+      } else {
+        info = "No Recorded Data for this location<br>"
       }
+      marker.bindPopup("<b>Latitude:</b> " + latlng.lat + "<br>" +
+                        "<b>Longitude:</b> " + latlng.lng + "<br>" + info).openPopup();
+      
     }).fail(function(error) {
       console.log(error);
       console.log( "error" );

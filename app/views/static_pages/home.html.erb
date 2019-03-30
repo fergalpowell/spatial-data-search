@@ -28,9 +28,9 @@
     url:
         'https://www.overpass-api.de/api/interpreter?data=' + 
         '[out:json][timeout:60];' + 
-        'node(around:5.0,51.48906607201381, -0.11243820190429688);' + 
-        'way(around:5.0,51.48906607201381, -0.11243820190429688);' + 
-        'relation(around:5.0,51.48906607201381, -0.11243820190429688);' + 
+        'node(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
+        'way(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
+        'relation(around:5.0,' + latlng.lat + ',' + latlng.lng +');' + 
         'out;',
     dataType: 'json',
     type: 'GET',
